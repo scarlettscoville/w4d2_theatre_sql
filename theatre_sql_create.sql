@@ -13,9 +13,9 @@ CREATE TABLE movie(
 );
 
 CREATE TABLE theatre(
-    theatre_id SERIAL PRIMARY KEY,
     movie_id INTEGER NOT NULL,
-    FOREIGN KEY(movie_id) REFERENCES movie(movie_id) ON DELETE CASCADE
+    FOREIGN KEY(movie_id) REFERENCES movie(movie_id) ON DELETE CASCADE,
+    theatre_num VARCHAR(5)
 );
 
 CREATE TABLE ticket(
@@ -24,8 +24,7 @@ CREATE TABLE ticket(
     FOREIGN KEY(customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE,
     movie_id INTEGER NOT NULL,
     FOREIGN KEY(movie_id) REFERENCES movie(movie_id) ON DELETE CASCADE,
-    theatre_id INTEGER NOT NULL,
-    FOREIGN KEY(theatre_id) REFERENCES theatre(theatre_id) ON DELETE CASCADE
+    price DECIMAL(10,2)
 );
 
 CREATE TABLE item(
